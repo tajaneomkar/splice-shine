@@ -102,7 +102,7 @@ export function ContactSection() {
             <Card className="p-12 glass text-center max-w-md">
               <h3 className="text-3xl font-bold mb-6">Ready to Work Together?</h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                Let's discuss your project and bring your vision to life with professional video editing.
+                Let's bring your vision to life with professional video editing and creative storytelling.
               </p>
               <button 
                 onClick={() => window.open('https://calendly.com/tdk09671/30min', '_blank')}

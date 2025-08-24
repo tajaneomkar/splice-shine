@@ -23,7 +23,7 @@ interface PortfolioData {
 
 export function PortfolioSection() {
   const [portfolioData, setPortfolioData] = useState<PortfolioData>({ categories: [], projects: [] });
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("Long Form");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
@@ -31,16 +31,18 @@ export function PortfolioSection() {
     import("@/data/portfolio.json")
       .then((data) => {
         setPortfolioData(data.default);
+        // Set default category to first available category
+        if (data.default.categories.length > 0) {
+          setSelectedCategory(data.default.categories[0]);
+        }
       })
       .catch((error) => {
         console.error("Failed to load portfolio data:", error);
       });
   }, []);
 
-  const categories = ["All", ...portfolioData.categories];
-  const filteredProjects = selectedCategory === "All" 
-    ? portfolioData.projects 
-    : portfolioData.projects.filter(project => project.category === selectedCategory);
+  const categories = portfolioData.categories;
+  const filteredProjects = portfolioData.projects.filter(project => project.category === selectedCategory);
 
   return (
     <section id="portfolio" className="py-24 px-6">
