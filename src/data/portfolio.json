@@ -1,0 +1,71 @@
+{
+  "categories": ["Long Form", "Short Form", "Real Estate", "Motion Graphics", "Personal Content"],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Corporate Brand Film",
+      "description": "A cinematic brand story showcasing innovation and creativity through dynamic visuals and storytelling.",
+      "category": "Long Form",
+      "tags": ["Branding", "Cinematic", "Corporate"],
+      "thumbnail": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=450&fit=crop&auto=format",
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "duration": "2:30",
+      "client": "Tech Corp"
+    },
+    {
+      "id": 2,
+      "title": "Social Media Campaign",
+      "description": "Series of short-form content optimized for social platforms with engaging hooks and clear CTAs.",
+      "category": "Short Form",
+      "tags": ["Social", "Short-form", "Viral"],
+      "thumbnail": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=450&fit=crop&auto=format",
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "duration": "0:30",
+      "client": "Brand Agency"
+    },
+    {
+      "id": 3,
+      "title": "Luxury Property Tour",
+      "description": "Cinematic real estate showcase featuring smooth camera movements and sophisticated editing.",
+      "category": "Real Estate",
+      "tags": ["Real Estate", "Luxury", "Cinematic"],
+      "thumbnail": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=450&fit=crop&auto=format",
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "duration": "3:45",
+      "client": "Luxury Realty"
+    },
+    {
+      "id": 4,
+      "title": "Animated Logo Reveal",
+      "description": "Dynamic motion graphics with smooth transitions and modern aesthetic for brand identity.",
+      "category": "Motion Graphics",
+      "tags": ["Animation", "Branding", "Motion"],
+      "thumbnail": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=450&fit=crop&auto=format",
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "duration": "0:15",
+      "client": "Startup Co"
+    },
+    {
+      "id": 5,
+      "title": "Travel Vlog",
+      "description": "Personal storytelling project capturing adventures with creative editing and color grading.",
+      "category": "Personal Content",
+      "tags": ["Travel", "Personal", "Storytelling"],
+      "thumbnail": "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&h=450&fit=crop&auto=format",
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "duration": "8:20",
+      "client": "Personal Project"
+    },
+    {
+      "id": 6,
+      "title": "Product Showcase",
+      "description": "Sleek product demonstration with macro photography and smooth transitions.",
+      "category": "Long Form",
+      "tags": ["Product", "Commercial", "Modern"],
+      "thumbnail": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=450&fit=crop&auto=format",
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "duration": "2:15",
+      "client": "E-commerce Brand"
+    }
+  ]
+}

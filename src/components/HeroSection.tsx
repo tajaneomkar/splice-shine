@@ -30,14 +30,14 @@ export function HeroSection() {
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="gradient-text">Video Editor</span>
             <br />
-            <span className="text-foreground">& Creator</span>
+            <span className="text-foreground">& Content Producer</span>
           </h1>
         </div>
         
         <div className="animate-slide-up delay-200">
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Crafting compelling stories through cinematic visuals and seamless editing. 
-            Bringing your vision to life with professional video production.
+            Bringing stories to life with engaging visuals and impactful editing. 
+            I create videos that not only look good but also connect deeply with the audience.
           </p>
         </div>
         
@@ -68,7 +68,7 @@ export function HeroSection() {
             <div className="text-sm text-muted-foreground">Projects</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold gradient-text">5+</div>
+            <div className="text-3xl font-bold gradient-text">2+</div>
             <div className="text-sm text-muted-foreground">Years Experience</div>
           </div>
           <div className="text-center">

@@ -1,0 +1,28 @@
+{
+  "clients": [
+    {
+      "name": "Nike",
+      "logoUrl": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=200&h=100&fit=crop&auto=format"
+    },
+    {
+      "name": "Sony Music",
+      "logoUrl": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=200&h=100&fit=crop&auto=format"
+    },
+    {
+      "name": "Netflix",
+      "logoUrl": "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=200&h=100&fit=crop&auto=format"
+    },
+    {
+      "name": "Spotify",
+      "logoUrl": "https://images.unsplash.com/photo-1611339555312-e607c8352fd7?w=200&h=100&fit=crop&auto=format"
+    },
+    {
+      "name": "Adobe",
+      "logoUrl": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop&auto=format"
+    },
+    {
+      "name": "YouTube",
+      "logoUrl": "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=200&h=100&fit=crop&auto=format"
+    }
+  ]
+}

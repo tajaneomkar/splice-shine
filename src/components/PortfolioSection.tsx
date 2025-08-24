@@ -1,87 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Play, ExternalLink } from "lucide-react";
 
-const projects = [
-  {
-    id: 1,
-    title: "Corporate Brand Film",
-    description: "A cinematic brand story showcasing innovation and creativity through dynamic visuals and storytelling.",
-    category: "Commercial",
-    tags: ["Branding", "Cinematic", "Corporate"],
-    thumbnail: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=450&fit=crop&auto=format",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    duration: "2:30",
-    client: "Tech Corp"
-  },
-  {
-    id: 2,
-    title: "Music Video Production",
-    description: "High-energy music video with creative transitions, color grading, and rhythmic editing.",
-    category: "Music Video",
-    tags: ["Music", "Creative", "Color Grading"],
-    thumbnail: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=450&fit=crop&auto=format",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    duration: "3:45",
-    client: "Indie Artist"
-  },
-  {
-    id: 3,
-    title: "Documentary Short",
-    description: "Compelling documentary storytelling with interview cuts, b-roll integration, and emotional pacing.",
-    category: "Documentary",
-    tags: ["Documentary", "Storytelling", "Interview"],
-    thumbnail: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&h=450&fit=crop&auto=format",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    duration: "15:20",
-    client: "Non-profit Org"
-  },
-  {
-    id: 4,
-    title: "Product Showcase",
-    description: "Sleek product demonstration with macro photography, smooth transitions, and modern aesthetics.",
-    category: "Commercial",
-    tags: ["Product", "Macro", "Modern"],
-    thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=450&fit=crop&auto=format",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    duration: "1:45",
-    client: "Startup Co"
-  },
-  {
-    id: 5,
-    title: "Event Highlights",
-    description: "Dynamic event coverage with multiple camera angles, live audio sync, and fast-paced editing.",
-    category: "Event",
-    tags: ["Event", "Multi-cam", "Live"],
-    thumbnail: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=450&fit=crop&auto=format",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    duration: "5:12",
-    client: "Event Agency"
-  },
-  {
-    id: 6,
-    title: "Social Media Campaign",
-    description: "Series of short-form content optimized for social platforms with engaging hooks and clear CTAs.",
-    category: "Social Media",
-    tags: ["Social", "Short-form", "Viral"],
-    thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=450&fit=crop&auto=format",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    duration: "0:30",
-    client: "Brand Agency"
-  }
-];
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  tags: string[];
+  thumbnail: string;
+  videoUrl: string;
+  duration: string;
+  client: string;
+}
 
-const categories = ["All", "Commercial", "Music Video", "Documentary", "Event", "Social Media"];
+interface PortfolioData {
+  categories: string[];
+  projects: Project[];
+}
 
 export function PortfolioSection() {
+  const [portfolioData, setPortfolioData] = useState<PortfolioData>({ categories: [], projects: [] });
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+  useEffect(() => {
+    // Load portfolio data from JSON
+    import("@/data/portfolio.json")
+      .then((data) => {
+        setPortfolioData(data.default);
+      })
+      .catch((error) => {
+        console.error("Failed to load portfolio data:", error);
+      });
+  }, []);
+
+  const categories = ["All", ...portfolioData.categories];
   const filteredProjects = selectedCategory === "All" 
-    ? projects 
-    : projects.filter(project => project.category === selectedCategory);
+    ? portfolioData.projects 
+    : portfolioData.projects.filter(project => project.category === selectedCategory);
 
   return (
     <section id="portfolio" className="py-24 px-6">
@@ -92,8 +51,8 @@ export function PortfolioSection() {
             <span className="gradient-text">My Portfolio</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A showcase of creative video projects spanning commercials, music videos, 
-            documentaries, and social media content.
+            A portfolio of diverse video projects, including commercials, long-form and short-form content, 
+            real estate videos, motion graphics, and social media campaigns.
           </p>
         </div>
 

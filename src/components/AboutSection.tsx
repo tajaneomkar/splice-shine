@@ -1,67 +1,44 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { useState, useEffect } from "react";
 import { 
-  Video, 
-  Palette, 
-  Zap, 
   Award,
-  Camera,
   Edit3,
-  Music,
-  Layers,
-  Clock,
   Users
 } from "lucide-react";
-
-const skills = [
-  { name: "Video Editing", level: 95, icon: Edit3 },
-  { name: "Color Grading", level: 90, icon: Palette },
-  { name: "Motion Graphics", level: 85, icon: Zap },
-  { name: "Audio Mixing", level: 80, icon: Music },
-  { name: "Cinematography", level: 88, icon: Camera },
-  { name: "Post Production", level: 92, icon: Layers },
-];
 
 const tools = [
   "Adobe Premiere Pro",
   "Adobe After Effects", 
-  "DaVinci Resolve",
-  "Final Cut Pro",
-  "Cinema 4D",
-  "Adobe Audition",
-  "Photoshop",
-  "Illustrator"
+  "Adobe Photoshop",
+  "Blender 3D",
+  "ChatGPT",
+  "Google Veo 3",
+  "RunwayML"
 ];
 
-const experience = [
-  {
-    year: "2019 - Present",
-    title: "Senior Video Editor",
-    company: "Creative Media Studio",
-    description: "Leading video production projects for major brands and creating compelling visual narratives."
-  },
-  {
-    year: "2017 - 2019", 
-    title: "Video Editor",
-    company: "Digital Agency",
-    description: "Edited promotional videos, social media content, and corporate communications."
-  },
-  {
-    year: "2015 - 2017",
-    title: "Junior Editor",
-    company: "Production House",
-    description: "Started career focusing on documentary editing and post-production workflows."
-  }
-];
+interface Client {
+  name: string;
+  logoUrl: string;
+}
 
-const achievements = [
-  { icon: Award, text: "50+ Successful Projects" },
-  { icon: Users, text: "30+ Happy Clients" },
-  { icon: Clock, text: "5+ Years Experience" },
-  { icon: Video, text: "1000+ Hours Edited" }
-];
+interface ClientsData {
+  clients: Client[];
+}
 
 export function AboutSection() {
+  const [clientsData, setClientsData] = useState<ClientsData>({ clients: [] });
+
+  useEffect(() => {
+    // Load clients data from JSON
+    import("@/data/clients.json")
+      .then((data) => {
+        setClientsData(data.default);
+      })
+      .catch((error) => {
+        console.error("Failed to load clients data:", error);
+      });
+  }, []);
   return (
     <section id="about" className="py-24 px-6 bg-muted/30">
       <div className="max-w-7xl mx-auto">
@@ -71,43 +48,23 @@ export function AboutSection() {
             <span className="gradient-text">About Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Passionate video editor with 5+ years of experience crafting compelling visual stories. 
-            I specialize in turning raw footage into cinematic masterpieces that engage and inspire audiences.
+            I'm a Video Editor and Content Producer passionate about crafting stories that truly connect with people. 
+            Over the past few years, I've honed my skills in transforming raw footage into polished, cinematic visuals 
+            that balance creativity with clarity. My focus is always on storytelling—ensuring every project not only 
+            looks professional but also leaves a lasting impression on the audience.
+            <br /><br />
+            From seamless transitions to thoughtful pacing, I approach each edit with precision and creativity. 
+            Whether it's short-form content, brand videos, or storytelling projects, I bring reliability, attention 
+            to detail, and a creative eye to the table. If you're looking for someone who values both quality and 
+            impact, I'd be glad to collaborate and bring your vision to life.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left Column - Skills & Tools */}
+          {/* Left Column - Tools */}
           <div className="space-y-8">
-            {/* Skills */}
-            <div className="animate-slide-in-left">
-              <h3 className="text-2xl font-bold mb-6 flex items-center">
-                <Zap className="mr-3 h-6 w-6 text-primary" />
-                Skills & Expertise
-              </h3>
-              <div className="space-y-4">
-                {skills.map((skill, index) => (
-                  <div key={skill.name} className={`skill-card p-4 rounded-xl animate-scale-in delay-${index * 100}`}>
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center">
-                        <skill.icon className="h-5 w-5 mr-3 text-primary" />
-                        <span className="font-medium">{skill.name}</span>
-                      </div>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-muted rounded-full h-2">
-                      <div 
-                        className="bg-gradient-hero h-2 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Tools */}
-            <div className="animate-slide-in-left delay-200">
+            <div className="animate-slide-in-left">
               <h3 className="text-2xl font-bold mb-6 flex items-center">
                 <Edit3 className="mr-3 h-6 w-6 text-primary" />
                 Tools & Software
@@ -120,50 +77,25 @@ export function AboutSection() {
                 ))}
               </div>
             </div>
-
-            {/* Achievements */}
-            <div className="animate-slide-in-left delay-300">
-              <h3 className="text-2xl font-bold mb-6 flex items-center">
-                <Award className="mr-3 h-6 w-6 text-primary" />
-                Achievements
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {achievements.map((achievement, index) => (
-                  <div key={index} className="skill-card p-4 rounded-xl text-center">
-                    <achievement.icon className="h-8 w-8 mx-auto mb-2 text-primary" />
-                    <p className="text-sm font-medium">{achievement.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Right Column - Experience */}
+          {/* Right Column - Clients */}
           <div className="animate-slide-in-right">
             <h3 className="text-2xl font-bold mb-6 flex items-center">
-              <Clock className="mr-3 h-6 w-6 text-primary" />
-              Experience
+              <Users className="mr-3 h-6 w-6 text-primary" />
+              Clients
             </h3>
-            <div className="space-y-6">
-              {experience.map((exp, index) => (
-                <Card key={index} className={`p-6 glass glass-hover animate-slide-up delay-${index * 200}`}>
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-3 h-3 bg-gradient-hero rounded-full mt-2" />
-                    </div>
-                    <div className="flex-grow">
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-lg font-semibold">{exp.title}</h4>
-                        <Badge variant="outline" className="text-xs">
-                          {exp.year}
-                        </Badge>
-                      </div>
-                      <p className="text-primary font-medium mb-2">{exp.company}</p>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {exp.description}
-                      </p>
-                    </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {clientsData.clients.map((client, index) => (
+                <Card key={index} className={`p-4 glass glass-hover animate-scale-in delay-${index * 100} text-center hover:transform hover:scale-105 transition-all duration-300`}>
+                  <div className="aspect-video rounded-lg overflow-hidden mb-3 bg-muted/50 flex items-center justify-center">
+                    <img
+                      src={client.logoUrl}
+                      alt={`${client.name} logo`}
+                      className="max-w-full max-h-full object-contain filter brightness-0 invert dark:brightness-100 dark:invert-0 opacity-70 hover:opacity-100 transition-opacity"
+                    />
                   </div>
+                  <p className="font-medium text-sm">{client.name}</p>
                 </Card>
               ))}
             </div>
@@ -178,10 +110,10 @@ export function AboutSection() {
               Let's bring your vision to life with professional video editing and creative storytelling.
             </p>
             <button 
-              onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => window.open('https://calendly.com/tdk09671/30min', '_blank')}
               className="hero-button px-8 py-3 rounded-full font-medium"
             >
-              Get Started Today
+              Book a Call
             </button>
           </div>
         </div>
