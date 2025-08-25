@@ -89,6 +89,10 @@ export function PortfolioSection() {
                   src={project.thumbnail}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform hover:scale-110"
+                  onError={(e) => {
+                    console.log('Failed to load image:', project.thumbnail);
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=450&fit=crop&auto=format';
+                  }}
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
                   <Play className="h-12 w-12 text-white" />

@@ -93,6 +93,10 @@ export function AboutSection() {
                       src={client.logoUrl}
                       alt={`${client.name} logo`}
                       className="max-w-full max-h-full object-contain filter brightness-0 invert dark:brightness-100 dark:invert-0 opacity-70 hover:opacity-100 transition-opacity"
+                      onError={(e) => {
+                        console.log('Failed to load client logo:', client.logoUrl);
+                        e.currentTarget.style.display = 'none';
+                      }}
                     />
                   </div>
                   <p className="font-medium text-sm">{client.name}</p>
