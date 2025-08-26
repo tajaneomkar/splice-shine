@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Play, ExternalLink } from "lucide-react";
+import { extractDriveId, getDriveImageUrl, getDriveVideoEmbedUrl } from "@/utils/driveLink";
 
 interface Project {
   id: number;
@@ -13,7 +19,6 @@ interface Project {
   thumbnail: string;
   videoUrl: string;
   duration: string;
-  client: string;
 }
 
 interface PortfolioData {
@@ -22,7 +27,10 @@ interface PortfolioData {
 }
 
 export function PortfolioSection() {
-  const [portfolioData, setPortfolioData] = useState<PortfolioData>({ categories: [], projects: [] });
+  const [portfolioData, setPortfolioData] = useState<PortfolioData>({
+    categories: [],
+    projects: [],
+  });
   const [selectedCategory, setSelectedCategory] = useState("Long Form");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -42,7 +50,9 @@ export function PortfolioSection() {
   }, []);
 
   const categories = portfolioData.categories;
-  const filteredProjects = portfolioData.projects.filter(project => project.category === selectedCategory);
+  const filteredProjects = portfolioData.projects.filter(
+    (project) => project.category === selectedCategory
+  );
 
   return (
     <section id="portfolio" className="py-24 px-6">
@@ -53,8 +63,9 @@ export function PortfolioSection() {
             <span className="gradient-text">My Portfolio</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A portfolio of diverse video projects, including commercials, long-form and short-form content, 
-            real estate videos, motion graphics, and social media campaigns.
+            A portfolio of diverse video projects, including commercials,
+            long-form and short-form content, real estate videos, motion
+            graphics, and social media campaigns.
           </p>
         </div>
 
@@ -66,8 +77,8 @@ export function PortfolioSection() {
               variant={selectedCategory === category ? "default" : "outline"}
               onClick={() => setSelectedCategory(category)}
               className={`rounded-full ${
-                selectedCategory === category 
-                  ? "hero-button" 
+                selectedCategory === category
+                  ? "hero-button"
                   : "glass glass-hover border-white/20"
               }`}
             >
@@ -81,18 +92,28 @@ export function PortfolioSection() {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className={`video-card rounded-2xl p-6 cursor-pointer animate-scale-in delay-${index * 100}`}
+              className={`video-card rounded-2xl p-6 cursor-pointer animate-scale-in delay-${
+                index * 100
+              }`}
               onClick={() => setSelectedProject(project)}
             >
               <div className="relative overflow-hidden rounded-xl mb-4 aspect-video">
                 <img
-                  src={project.thumbnail}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform hover:scale-110"
+                  src={getDriveImageUrl(project.thumbnail, "w1600")} // <-- use thumbnail endpoint
+                  alt={project.title || "Project thumbnail"}
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
                   onError={(e) => {
-                    console.log('Failed to load image:', project.thumbnail);
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=450&fit=crop&auto=format';
+                    // Fallback to uc endpoint if thumbnail fails
+                    const target = e.currentTarget as HTMLImageElement;
+                    const id = extractDriveId(project.thumbnail);
+                    if (id && !target.src.includes("/uc?")) {
+                      target.src = `https://drive.google.com/uc?export=view&id=${id}`;
+                    } else {
+                      target.src = "/placeholder.webp"; // final local fallback if you have one
+                    }
                   }}
+                  className="w-full h-full object-cover transition-transform hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
                   <Play className="h-12 w-12 text-white" />
@@ -101,7 +122,7 @@ export function PortfolioSection() {
                   {project.duration}
                 </div>
               </div>
-              
+
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <Badge variant="secondary" className="glass">
@@ -109,12 +130,12 @@ export function PortfolioSection() {
                   </Badge>
                   <ExternalLink className="h-4 w-4 text-muted-foreground" />
                 </div>
-                
+
                 <h3 className="text-xl font-semibold">{project.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-1">
                   {project.tags.map((tag) => (
                     <Badge key={tag} variant="outline" className="text-xs">
@@ -129,7 +150,10 @@ export function PortfolioSection() {
       </div>
 
       {/* Project Modal */}
-      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+      <Dialog
+        open={!!selectedProject}
+        onOpenChange={() => setSelectedProject(null)}
+      >
         <DialogContent className="max-w-4xl">
           {selectedProject && (
             <>
@@ -139,20 +163,18 @@ export function PortfolioSection() {
               <DialogDescription className="text-muted-foreground mb-4">
                 {selectedProject.description}
               </DialogDescription>
-              
+
               <div className="aspect-video mb-4 rounded-xl overflow-hidden">
-                <video
-                  controls
-                  className="w-full h-full object-cover"
-                  poster={selectedProject.thumbnail}
-                >
-                  <source src={selectedProject.videoUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <iframe
+                  src={getDriveVideoEmbedUrl(selectedProject.videoUrl)}
+                  width="100%"
+                  height="100%"
+                  allow="autoplay"
+                  allowFullScreen
+                />
               </div>
 
               <div className="flex items-center justify-between text-sm text-muted-foreground">
-                <span>Client: {selectedProject.client}</span>
                 <span>Duration: {selectedProject.duration}</span>
               </div>
 

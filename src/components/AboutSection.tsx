@@ -1,20 +1,17 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { useState, useEffect } from "react";
-import { 
-  Award,
-  Edit3,
-  Users
-} from "lucide-react";
+import { Award, Edit3, Users } from "lucide-react";
+import { getDriveImageUrl, extractDriveId } from "@/utils/driveLink";
 
 const tools = [
   "Adobe Premiere Pro",
-  "Adobe After Effects", 
+  "Adobe After Effects",
   "Adobe Photoshop",
   "Blender 3D",
   "ChatGPT",
   "Google Veo 3",
-  "RunwayML"
+  "RunwayML",
 ];
 
 interface Client {
@@ -48,15 +45,20 @@ export function AboutSection() {
             <span className="gradient-text">About Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I'm a Video Editor and Content Producer passionate about crafting stories that truly connect with people. 
-            Over the past few years, I've honed my skills in transforming raw footage into polished, cinematic visuals 
-            that balance creativity with clarity. My focus is always on storytelling—ensuring every project not only 
-            looks professional but also leaves a lasting impression on the audience.
-            <br /><br />
-            From seamless transitions to thoughtful pacing, I approach each edit with precision and creativity. 
-            Whether it's short-form content, brand videos, or storytelling projects, I bring reliability, attention 
-            to detail, and a creative eye to the table. If you're looking for someone who values both quality and 
-            impact, I'd be glad to collaborate and bring your vision to life.
+            I'm a Video Editor and Content Producer passionate about crafting
+            stories that truly connect with people. Over the past few years,
+            I've honed my skills in transforming raw footage into polished,
+            cinematic visuals that balance creativity with clarity. My focus is
+            always on storytelling—ensuring every project not only looks
+            professional but also leaves a lasting impression on the audience.
+            <br />
+            <br />
+            From seamless transitions to thoughtful pacing, I approach each edit
+            with precision and creativity. Whether it's short-form content,
+            brand videos, or storytelling projects, I bring reliability,
+            attention to detail, and a creative eye to the table. If you're
+            looking for someone who values both quality and impact, I'd be glad
+            to collaborate and bring your vision to life.
           </p>
         </div>
 
@@ -71,7 +73,11 @@ export function AboutSection() {
               </h3>
               <div className="flex flex-wrap gap-2">
                 {tools.map((tool) => (
-                  <Badge key={tool} variant="secondary" className="glass px-3 py-1 text-sm hover:bg-card-hover">
+                  <Badge
+                    key={tool}
+                    variant="secondary"
+                    className="glass px-3 py-1 text-sm hover:bg-card-hover"
+                  >
                     {tool}
                   </Badge>
                 ))}
@@ -87,22 +93,38 @@ export function AboutSection() {
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               {clientsData.clients.map((client, index) => (
-                <Card key={index} className={`p-4 glass glass-hover animate-scale-in delay-${index * 100} text-center hover:transform hover:scale-105 transition-all duration-300`}>
+                <Card
+                  key={index}
+                  className={`p-4 glass glass-hover animate-scale-in delay-${
+                    index * 100
+                  } text-center hover:transform hover:scale-105 transition-all duration-300`}
+                >
                   <div className="aspect-video rounded-lg overflow-hidden mb-3 bg-muted/50 flex items-center justify-center">
                     <img
-                      src={client.logoUrl}
+                      src={getDriveImageUrl(client.logoUrl, "w800")}
                       alt={`${client.name} logo`}
-                      className="max-w-full max-h-full object-contain filter brightness-0 invert dark:brightness-100 dark:invert-0 opacity-70 hover:opacity-100 transition-opacity"
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
                       onError={(e) => {
-                        console.log('Failed to load client logo:', client.logoUrl);
-                        e.currentTarget.style.display = 'none';
+                        // Fallback to uc endpoint if thumbnail fails
+                        const el = e.currentTarget as HTMLImageElement;
+                        const id = extractDriveId(client.logoUrl);
+                        if (id && !el.src.includes("/uc?")) {
+                          el.src = `https://drive.google.com/uc?export=view&id=${id}`;
+                        } else {
+                          el.src = "/logo-placeholder.png"; // optional local fallback
+                        }
                       }}
+                      className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"
                     />
                   </div>
                   <p className="font-medium text-sm">{client.name}</p>
                 </Card>
               ))}
             </div>
+            <p className="text-center text-muted-foreground mt-1 font-semibold underline text-lg tracking-wide">
+              And many more…
+            </p>
           </div>
         </div>
 
@@ -111,10 +133,13 @@ export function AboutSection() {
           <div className="glass p-8 rounded-2xl max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">Ready to Work Together?</h3>
             <p className="text-muted-foreground mb-6">
-              Let's bring your vision to life with professional video editing and creative storytelling.
+              Let's bring your vision to life with professional video editing
+              and creative storytelling.
             </p>
-            <button 
-              onClick={() => window.open('https://calendly.com/tdk09671/30min', '_blank')}
+            <button
+              onClick={() =>
+                window.open("https://calendly.com/tdk09671/30min", "_blank")
+              }
               className="hero-button px-8 py-3 rounded-full font-medium"
             >
               Book a Call

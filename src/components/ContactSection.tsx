@@ -1,10 +1,11 @@
 import { Card } from "@/components/ui/card";
-import { 
-  Mail, 
-  Phone, 
+import {
+  Mail,
+  Phone,
   MapPin,
   Instagram,
-  Linkedin
+  Linkedin,
+  Youtube,
 } from "lucide-react";
 
 const contactInfo = [
@@ -12,25 +13,38 @@ const contactInfo = [
     icon: Phone,
     label: "Phone",
     value: "8830128594",
-    href: "tel:+918830128594"
+    href: "tel:+918830128594",
   },
   {
     icon: Mail,
     label: "Email",
     value: "tdk09671@gmail.com",
-    href: "mailto:tdk09671@gmail.com"
+    href: "mailto:tdk09671@gmail.com",
   },
   {
     icon: MapPin,
     label: "Location",
     value: "Nashik, Maharashtra - India",
-    href: "#"
-  }
+    href: "https://www.google.com/maps/place/Nashik,+Maharashtra,+India",
+  },
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: "https://www.instagram.com/ommi_in/", label: "Instagram" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/omtidke/", label: "LinkedIn" }
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/ommi_in/",
+    label: "Instagram",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/omtidke/",
+    label: "LinkedIn",
+  },
+  {
+    icon: Youtube,
+    href: "https://youtube.com/@ommi.?si=cjc9Yo2PPIHJzQ6u",
+    label: "YouTube",
+  },
 ];
 
 export function ContactSection() {
@@ -43,74 +57,79 @@ export function ContactSection() {
             <span className="gradient-text">Let's Connect</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ready to bring your video project to life? Get in touch and let's discuss 
-            how we can create something amazing together.
+            Ready to bring your video project to life? Get in touch and let's
+            discuss how we can create something amazing together.
           </p>
         </div>
 
+        {/* Grid Layout */}
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="animate-slide-in-left">
-              <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <Card key={index} className={`p-4 glass glass-hover animate-scale-in delay-${index * 100}`}>
-                    <a 
-                      href={info.href}
-                      className="flex items-center space-x-4 text-foreground hover:text-primary transition-colors"
-                      target={info.href.startsWith('http') ? '_blank' : '_self'}
-                      rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    >
-                      <div className="flex-shrink-0">
-                        <div className="w-12 h-12 bg-gradient-hero rounded-full flex items-center justify-center">
-                          <info.icon className="h-5 w-5 text-white" />
-                        </div>
-                      </div>
-                      <div>
-                        <p className="font-medium">{info.label}</p>
-                        <p className="text-muted-foreground">{info.value}</p>
-                      </div>
-                    </a>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="animate-slide-in-left delay-200">
-              <h3 className="text-xl font-bold mb-4">Follow My Work</h3>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
+          {/* Left side - Get in Touch */}
+          <div className="animate-slide-in-left">
+            <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
+            <div className="space-y-4">
+              {contactInfo.map((info, index) => (
+                <Card
+                  key={index}
+                  className={`p-4 glass glass-hover animate-scale-in delay-${
+                    index * 100
+                  }`}
+                >
                   <a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-12 h-12 glass glass-hover rounded-full hover:bg-gradient-hero hover:text-white transition-all"
-                    aria-label={social.label}
+                    href={info.href}
+                    className="flex items-center space-x-4 text-foreground hover:text-primary transition-colors"
+                    target={info.href.startsWith("http") ? "_blank" : "_self"}
+                    rel={
+                      info.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                   >
-                    <social.icon className="h-5 w-5" />
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-hero rounded-full flex items-center justify-center shadow-lg transform transition-transform hover:scale-110">
+                        <info.icon className="h-5 w-5 text-white" />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-medium">{info.label}</p>
+                      <p className="text-muted-foreground">{info.value}</p>
+                    </div>
                   </a>
-                ))}
-              </div>
+                </Card>
+              ))}
             </div>
           </div>
 
-          {/* Right side - Book a Call CTA */}
-          <div className="animate-slide-in-right flex items-center justify-center">
-            <Card className="p-12 glass text-center max-w-md">
-              <h3 className="text-3xl font-bold mb-6">Ready to Work Together?</h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                Let's bring your vision to life with professional video editing and creative storytelling.
-              </p>
-              <button 
-                onClick={() => window.open('https://calendly.com/tdk09671/30min', '_blank')}
-                className="hero-button px-8 py-4 rounded-full font-medium text-lg w-full"
-              >
-                Book a Call
-              </button>
-            </Card>
+          {/* Right side - Follow My Work */}
+          <div className="animate-slide-in-right">
+            <h3 className="text-2xl font-bold mb-6">Follow My Work</h3>
+            <div className="space-y-4">
+              {socialLinks.map((social, index) => (
+                <Card
+                  key={index}
+                  className={`p-4 glass glass-hover animate-scale-in delay-${
+                    index * 100
+                  }`}
+                >
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-4 text-foreground hover:text-primary transition-colors"
+                  >
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-hero rounded-full flex items-center justify-center shadow-lg transform transition-transform hover:scale-110">
+                        <social.icon className="h-5 w-5 text-white" />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-medium">{social.label}</p>
+                      {/* Removed showing URL */}
+                    </div>
+                  </a>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </div>
