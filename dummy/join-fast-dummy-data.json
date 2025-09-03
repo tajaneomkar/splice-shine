@@ -1,0 +1,1934 @@
+[
+  {
+    "data": {
+      "name": "connection",
+      "message": "Hello Gary Lawrence — and welcome to your onboarding experience with eXp Realty.\n\nI’m Luna, your private onboarding guide, here to walk you through this short application. It’s designed to help us understand your business and get you set up for success at eXp — on your terms.\n\n🔐 Your information stays private and secure. This form is encrypted, and no data is shared outside of your onboarding team without your consent. Luna is here to assist, not store or share.\n\n⚠️ Completing this application does not move your license. Once submitted, you’ll receive personalized next steps based on your region and license type.\n\nHere’s what you’ll need:\n\n• Your real estate license details\n\n• Your sponsor’s name (don’t worry, we’ll help if you’re unsure)\n\n• Direct deposit banking info\n\n• A payment method for the onboarding fee\n\n• MLS membership info (if applicable)\n\n✅ You can review and edit all answers before submitting.\n\nWe’re excited to support you — at your pace, in your style — and help you activate faster than any brokerage on the planet."
+    }
+  },
+  {
+    "data": {
+      "name": "licenseNumber",
+      "message": "What’s your Florida license number?",
+      "payload": [
+        {
+          "type": "simpleTextMessage",
+          "fields": [
+            {
+              "name": "licenseNumber",
+              "label": "License Number",
+              "value": ""
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "MESSAGE"
+  },
+  {
+    "data": {
+      "name": "licenseAndMLSData",
+      "message": "Agents are required to be a member of an MLS at eXp Realty. Please enter your Florida MLS ID below so we can help connect your account or tap \"I don’t have an MLS ID\".",
+      "payload": [
+        {
+          "type": "replyOrButtons",
+          "fields": [
+            {
+              "type": "text",
+              "value": ""
+            },
+            {
+              "name": "NoMlsId",
+              "type": "button",
+              "label": "I do not have MLS ID",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "MESSAGE"
+  },
+  {
+    "data": {
+      "name": "mlsConfirmation",
+      "message": "Thank you for sharing! I've found following information. Does this look correct?",
+      "payload": [
+        {
+          "type": "formView",
+          "fields": [
+            {
+              "name": "firstName",
+              "label": "First Name:",
+              "value": "GARY"
+            },
+            {
+              "name": "lastName",
+              "label": "Last Name:",
+              "value": "LAWRENCE"
+            },
+            {
+              "name": "licenseAndMLSData",
+              "label": "MLS ID:",
+              "value": "70700"
+            },
+            {
+              "name": "mlsName",
+              "label": "MLS Name:",
+              "value": "realMLS (Northeast Florida Multiple Listing Service)"
+            },
+            {
+              "name": "address",
+              "label": "Address:",
+              "value": "101 E Town Place"
+            },
+            {
+              "name": "city",
+              "label": "City:",
+              "value": "St Augustine"
+            },
+            {
+              "name": "postalCode",
+              "label": "Postal Code:",
+              "value": "32092"
+            },
+            {
+              "name": "state",
+              "label": "Personal State:",
+              "value": "FL"
+            },
+            {
+              "name": "licenseNumber",
+              "label": "License Number:",
+              "value": "SL3460754"
+            },
+            {
+              "name": "code",
+              "label": "License State:",
+              "value": "FL"
+            },
+            {
+              "name": "licenseExpirationDate",
+              "label": "License Expiration:",
+              "value": "2025-09-30T00:00:00.000Z"
+            },
+            {
+              "name": "licenseIssueDate",
+              "label": "License Issue Date:",
+              "value": "2020-01-21T00:00:00.000Z"
+            },
+            {
+              "name": "licenseStatus",
+              "label": "License Status:",
+              "value": "Current"
+            },
+            {
+              "name": "transactionSide",
+              "label": "Sales Transactions:",
+              "value": "86"
+            },
+            {
+              "name": "mobilePhone",
+              "label": "Mobile Number:",
+              "value": "(854) 482-4564"
+            }
+          ],
+          "validations": {
+            "required": true,
+            "errorMessage": "This field is required"
+          }
+        },
+        {
+          "type": "textMessage",
+          "fields": [
+            {
+              "label": "Is these information correct?",
+              "fontWeight": "600"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        },
+        {
+          "type": "button",
+          "fields": [
+            {
+              "name": "IsCorrect",
+              "label": "Yes, it is correct",
+              "value": "false"
+            },
+            {
+              "name": "IsWrong",
+              "label": "No, it needs to be updated",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "MESSAGE",
+    "missingField": false
+  },
+  {
+    "data": {
+      "name": "association",
+      "type": "primaryAdditional",
+      "message": "Please select your association(s) you plan to be affiliated with as a real estate agent in Florida.If you’re not sure or need assistance, just choose \"Not Sure/Need Assistance\" — we’ll help you get matched during onboarding.",
+      "payload": [
+        {
+          "type": "searchableTextField",
+          "fields": [
+            {
+              "label": "Start typing to search for your association from the list"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "fields": [
+            {
+              "name": "Not Sure / Need Assistance",
+              "type": "checkbox",
+              "checked": false,
+              "exclusive": true,
+              "selection": ""
+            },
+            {
+              "name": "Not a Member",
+              "type": "checkbox",
+              "checked": false,
+              "exclusive": true,
+              "selection": ""
+            },
+            {
+              "name": "Amelia Island  Nassau County Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Bartow Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Bonita SpringsEstero REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Broward Palm Beaches  St. Lucie REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Central Panhandle Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Central Pasco Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Daytona Beach Area Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Dixie Gilchrist Levy Counties Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "East Pasco Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "East Polk County Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Emerald Coast Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Englewood Area Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Flagler County Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Florida Keys Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Gainesville Alachua County Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Marathon and Lower Keys Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Marco Island Area Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Greater Tampa Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Heartland Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Hernando County Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Key West Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Lake City Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Lakeland Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Lake Wales Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Martin County REALTORS of the Treasure Coast",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Miami Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Naples Area Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Navarre Area Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "New Smyrna Beach Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Northeast Florida Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Ocala Marion County Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Okeechobee County Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Orlando Regional REALTOR Association",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Osceola County Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Palm Beach Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Pensacola Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Pinellas Suncoast Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Punta Gorda Port Charlotte North Port Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "REALTOR Association of Sarasota  Manatee",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "REALTORS Association of Citrus County",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "REALTORS Association of Franklin  Gulf Counties",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "REALTORS Association of Indian River County",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "REALTORS Association of Lake  Sumter Counties",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Royal Palm Coast REALTOR Association",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Sanibel and Captiva Islands Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Space Coast Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "St. Augustine and St. Johns County Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Tallahassee Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Venice Area Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Virgin Islands Territorial Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "West Pasco Board of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "West Volusia Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            }
+          ],
+          "validations": {
+            "required": true,
+            "errorMessage": "Please select at least one state"
+          }
+        },
+        {
+          "type": "button",
+          "fields": [
+            {
+              "label": "Submit",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "MESSAGE"
+  },
+  {
+    "data": {
+      "name": "memberMLS",
+      "type": "primaryAdditional",
+      "message": "Are you currently a member of a MLS in Florida?If yes, select your MLS(s) from the list below.If you’re not sure or need assistance, just choose \"Not Sure/Need Assistance\" — we’ll help you get matched during onboarding.",
+      "payload": [
+        {
+          "type": "searchableTextField",
+          "fields": [
+            {
+              "label": "Start typing to search for your MLS from the list"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "fields": [
+            {
+              "name": "Not Sure / Need Assistance",
+              "type": "checkbox",
+              "checked": false,
+              "exclusive": true,
+              "selection": ""
+            },
+            {
+              "name": "Not a Member",
+              "type": "checkbox",
+              "checked": false,
+              "exclusive": true,
+              "selection": ""
+            },
+            {
+              "name": "Amelia Island - Nassau County Association of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "BeachesMLS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Capital Area Technology & REALTOR® Services (Tallahassee Board of REALTORS®)",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Central Listing Service at Ocean Reef",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Central Panhandle Association of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Daytona Beach Area Association of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Dixie Gilchrist Levy Board of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Emerald Coast Association of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Florida Keys Board of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Forgotten Coast REALTOR® Association",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Marathon and Lower Keys Association of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Marco Island Area Association of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Heartland Association of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Hernando County Association of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Key West Association of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Martin County REALTORS® of the Treasure Coast",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "MIAMI REALTORS® MLS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Multiple Listing Service of Bonita Springs-Estero",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Naples Area Board of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Navarre Area Board of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "North Florida MLS (Lake City Board of REALTORS®)",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Palm Beach Board of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Pensacola Association of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "realMLS (Northeast Florida Multiple Listing Service)",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "REALTORS® Association of Citrus County",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "REALTORS® Association of Indian River County",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Sanibel & Captiva Islands Association of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Space Coast MLS (Space Coast Association of REALTORS®)",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "St. Augustine and St. Johns County Board of REALTORS®",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Stellar MLS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Virgin Islands Territorial Association of REALTORS",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            },
+            {
+              "name": "Florida Gulf Coast Multiple Listing Service",
+              "checked": false,
+              "selection": "",
+              "type": "checkbox"
+            }
+          ],
+          "validations": {
+            "required": true,
+            "errorMessage": "Please select at least one state"
+          }
+        },
+        {
+          "type": "button",
+          "fields": [
+            {
+              "label": "Submit",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "MESSAGE"
+  },
+  {
+    "name": "mailAddress",
+    "message": "What’s the full mailing address associated with your real estate license?",
+    "payload": [
+      {
+        "type": "textField",
+        "fields": [
+          {
+            "name": "address",
+            "label": "Street Address",
+            "value": "101 E Town Place"
+          }
+        ],
+        "validations": {
+          "required": true,
+          "errorMessage": "Mailing Address cannot be empty."
+        }
+      },
+      {
+        "type": "textField",
+        "fields": [
+          {
+            "name": "postalCode",
+            "label": "Zip/Postal Code",
+            "value": "32092"
+          }
+        ],
+        "validations": {
+          "pattern": "^[0-9]{5}(?:-[0-9]{4})?$",
+          "required": true,
+          "errorMessage": "Enter a valid 5-digit or 9-digit ZIP code (e.g., 12345 or 12345-6789)."
+        }
+      },
+      {
+        "type": "textField",
+        "fields": [
+          {
+            "name": "city",
+            "label": "City",
+            "value": "St Augustine"
+          }
+        ],
+        "validations": {
+          "required": true,
+          "errorMessage": "City cannot be empty."
+        }
+      },
+      {
+        "type": "dropdown",
+        "fields": [
+          {
+            "name": "state",
+            "label": "State",
+            "value": "FL"
+          }
+        ],
+        "options": [
+          {
+            "label": "Alabama",
+            "value": "AL"
+          },
+          {
+            "label": "Alaska",
+            "value": "AK"
+          },
+          {
+            "label": "Arizona",
+            "value": "AZ"
+          },
+          {
+            "label": "Arkansas",
+            "value": "AR"
+          },
+          {
+            "label": "California",
+            "value": "CA"
+          },
+          {
+            "label": "Colorado",
+            "value": "CO"
+          },
+          {
+            "label": "Connecticut",
+            "value": "CT"
+          },
+          {
+            "label": "Delaware",
+            "value": "DE"
+          },
+          {
+            "label": "Florida",
+            "value": "FL"
+          },
+          {
+            "label": "Georgia",
+            "value": "GA"
+          },
+          {
+            "label": "Hawaii",
+            "value": "HI"
+          },
+          {
+            "label": "Idaho",
+            "value": "ID"
+          },
+          {
+            "label": "Illinois",
+            "value": "IL"
+          },
+          {
+            "label": "Indiana",
+            "value": "IN"
+          },
+          {
+            "label": "Iowa",
+            "value": "IA"
+          },
+          {
+            "label": "Kansas",
+            "value": "KS"
+          },
+          {
+            "label": "Kentucky",
+            "value": "KY"
+          },
+          {
+            "label": "Louisiana",
+            "value": "LA"
+          },
+          {
+            "label": "Maine",
+            "value": "ME"
+          },
+          {
+            "label": "Maryland",
+            "value": "MD"
+          },
+          {
+            "label": "Massachusetts",
+            "value": "MA"
+          },
+          {
+            "label": "Michigan",
+            "value": "MI"
+          },
+          {
+            "label": "Minnesota",
+            "value": "MN"
+          },
+          {
+            "label": "Mississippi",
+            "value": "MS"
+          },
+          {
+            "label": "Missouri",
+            "value": "MO"
+          },
+          {
+            "label": "Montana",
+            "value": "MT"
+          },
+          {
+            "label": "Nebraska",
+            "value": "NE"
+          },
+          {
+            "label": "Nevada",
+            "value": "NV"
+          },
+          {
+            "label": "New Hampshire",
+            "value": "NH"
+          },
+          {
+            "label": "New Jersey",
+            "value": "NJ"
+          },
+          {
+            "label": "New Mexico",
+            "value": "NM"
+          },
+          {
+            "label": "New York",
+            "value": "NY"
+          },
+          {
+            "label": "North Carolina",
+            "value": "NC"
+          },
+          {
+            "label": "North Dakota",
+            "value": "ND"
+          },
+          {
+            "label": "Ohio",
+            "value": "OH"
+          },
+          {
+            "label": "Oklahoma",
+            "value": "OK"
+          },
+          {
+            "label": "Oregon",
+            "value": "OR"
+          },
+          {
+            "label": "Pennsylvania",
+            "value": "PA"
+          },
+          {
+            "label": "Rhode Island",
+            "value": "RI"
+          },
+          {
+            "label": "South Carolina",
+            "value": "SC"
+          },
+          {
+            "label": "South Dakota",
+            "value": "SD"
+          },
+          {
+            "label": "Tennessee",
+            "value": "TN"
+          },
+          {
+            "label": "Texas",
+            "value": "TX"
+          },
+          {
+            "label": "Utah",
+            "value": "UT"
+          },
+          {
+            "label": "Vermont",
+            "value": "VT"
+          },
+          {
+            "label": "Virginia",
+            "value": "VA"
+          },
+          {
+            "label": "Washington",
+            "value": "WA"
+          },
+          {
+            "label": "Washington D.C.",
+            "value": "DC"
+          },
+          {
+            "label": "West Virginia",
+            "value": "WV"
+          },
+          {
+            "label": "Wisconsin",
+            "value": "WI"
+          },
+          {
+            "label": "Wyoming",
+            "value": "WY"
+          }
+        ],
+        "validations": {
+          "required": true,
+          "errorMessage": "Please select a State."
+        }
+      },
+      {
+        "type": "button",
+        "fields": [
+          {
+            "label": "Submit",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "data": {
+      "name": "existingTransaction",
+      "message": "Do you have any pending transactions or active listings in Florida that you plan to bring with you to eXp Realty?",
+      "payload": [
+        {
+          "type": "button",
+          "fields": [
+            {
+              "name": "Yes",
+              "label": "Yes",
+              "value": "false"
+            },
+            {
+              "name": "No",
+              "label": "No",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "MESSAGE"
+  },
+  {
+    "data": {
+      "name": "listings",
+      "message": "How many existing transactions or listings do you have?",
+      "payload": [
+        {
+          "type": "simpleTextMessage",
+          "fields": [
+            {
+              "label": "Total Listings",
+              "value": ""
+            }
+          ],
+          "validations": {
+            "type": "text",
+            "pattern": "^[1-9][0-9]*$",
+            "required": true,
+            "errorMessage": "Please enter a valid number"
+          }
+        }
+      ]
+    },
+    "event": "MESSAGE"
+  },
+  {
+    "data": {
+      "name": "sponsor",
+      "payload": [
+        {
+          "type": "textMessage",
+          "fields": [
+            {
+              "label": "Your Sponsor Selection Is Permanent — Choose Thoughtfully"
+            },
+            {
+              "label": "Your sponsor is the person who most influenced your decision to join eXp Realty. This selection is final once you sign your Independent Contractor Agreement (ICA) — it cannot be changed later."
+            },
+            {
+              "label": "🧭 Quick Clarification:\n\nYour sponsor is not always your mentor, coach, or team leader — unless they were the primary influence behind your decision to join."
+            },
+            {
+              "label": "If you're unsure, now is the time to pause and confirm. Once submitted, this cannot be edited."
+            },
+            {
+              "label": "🤝 Why It Matters:\n\nYour sponsor becomes your connection point into eXp. While they may offer support or introductions, their role is symbolic — not managerial or operational. Choosing based on who truly influenced your journey ensures alignment and transparency."
+            },
+            {
+              "label": "▶️ Watch the short video below for a quick walkthrough before making your selection."
+            }
+          ]
+        },
+        {
+          "type": "videoPlayer",
+          "fields": [
+            {
+              "label": "Exp Sponsor Video",
+              "value": "https://www.youtube.com/watch?v=L-TVDApvvWg",
+              "isDisable": false
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "fields": [
+            {
+              "label": "Please click on the button below to acknowledge you’ve watched and understood the video.",
+              "value": "false"
+            }
+          ]
+        }
+      ]
+    },
+    "event": "SPONSOR"
+  },
+  {
+    "data": {
+      "name": "sponsorSearch",
+      "message": "Please provide your Sponsor Information?",
+      "payload": [
+        {
+          "type": "textField",
+          "fields": [
+            {
+              "name": "firstName",
+              "label": "Sponsor First Name",
+              "value": ""
+            }
+          ],
+          "validations": {
+            "pattern": "^\\$|.{2,}",
+            "required": true,
+            "errorMessage": "First Name must have at least 2 characters if entered.",
+            "validateAnyOneFilled": true
+          }
+        },
+        {
+          "type": "textField",
+          "fields": [
+            {
+              "name": "lastName",
+              "label": "Sponsor Last Name",
+              "value": ""
+            }
+          ],
+          "validations": {
+            "pattern": "^\\$|.{2,}",
+            "required": true,
+            "errorMessage": "Last Name must have at least 2 characters if entered.",
+            "validateAnyOneFilled": true
+          }
+        },
+        {
+          "type": "textField",
+          "fields": [
+            {
+              "name": "email",
+              "label": "Sponsor eXp Email",
+              "value": ""
+            }
+          ],
+          "validations": {
+            "pattern": "^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$",
+            "required": true,
+            "errorMessage": "Enter a valid email address if provided.",
+            "validateAnyOneFilled": true
+          }
+        },
+        {
+          "type": "button",
+          "fields": [
+            {
+              "name": "search",
+              "label": "Search",
+              "value": "false",
+              "visibility": "true"
+            },
+            {
+              "name": "cannotFindSponsor",
+              "type": "linkButton",
+              "color": "primaryBlue",
+              "label": "Can’t find your sponsor?",
+              "value": "false",
+              "visibility": "false",
+              "skipValidationsIfTrue": true
+            },
+            {
+              "name": "dontWantToSelect",
+              "type": "linkButton",
+              "color": "primaryBlue",
+              "label": "Don't want to select your sponsor?",
+              "value": "false",
+              "visibility": "true",
+              "skipValidationsIfTrue": true
+            }
+          ]
+        }
+      ]
+    },
+    "event": "SPONSOR"
+  },
+  {
+    "data": {
+      "name": "corporateStaffMember",
+      "message": "Are you an eXp World Holdings staff member?",
+      "payload": [
+        {
+          "type": "button",
+          "fields": [
+            {
+              "name": "Yes",
+              "label": "Yes",
+              "value": "false",
+              "followUp": [
+                {
+                  "data": {
+                    "name": "staffPositionTitle",
+                    "message": "What is your Position Title?",
+                    "payload": [
+                      {
+                        "type": "simpleTextMessage",
+                        "fields": [
+                          {
+                            "name": "staffPositionTitle",
+                            "label": "Staff Position Title",
+                            "value": ""
+                          }
+                        ],
+                        "validations": {
+                          "required": true
+                        }
+                      }
+                    ]
+                  },
+                  "event": "BUSINESS"
+                },
+                {
+                  "data": {
+                    "name": "staffStartDate",
+                    "message": "What is your estimated staff start date?",
+                    "payload": [
+                      {
+                        "type": "calendar",
+                        "fields": [
+                          {
+                            "name": "staffStartDate",
+                            "label": "Staff Start Date",
+                            "value": ""
+                          }
+                        ],
+                        "validations": {
+                          "required": true
+                        }
+                      }
+                    ]
+                  },
+                  "event": "BUSINESS"
+                }
+              ]
+            },
+            {
+              "name": "No",
+              "label": "No",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "BUSINESS"
+  },
+  {
+    "data": {
+      "name": "brokerageInAnotherCountry",
+      "message": "Do you hold a real estate license or actively conduct real estate business in a country outside of the United States?",
+      "payload": [
+        {
+          "type": "button",
+          "fields": [
+            {
+              "name": "Yes",
+              "label": "Yes",
+              "value": "false",
+              "followUp": {
+                "data": {
+                  "name": "detailsOfBrokerageInAnotherCountry",
+                  "message": "Please provide any additional details including the country or countries you conduct real estate business in",
+                  "payload": [
+                    {
+                      "type": "simpleTextMessage",
+                      "fields": [
+                        {
+                          "name": "detailsOfBrokerageInAnotherCountry",
+                          "label": "Details Of Brokerage In Another Country",
+                          "value": ""
+                        }
+                      ],
+                      "validations": {
+                        "required": true
+                      }
+                    }
+                  ]
+                },
+                "event": "BUSINESS"
+              }
+            },
+            {
+              "name": "No",
+              "label": "No",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "BUSINESS"
+  },
+  {
+    "data": {
+      "name": "brokerOwnerOranotherBrokerage",
+      "message": "Are you a broker owner or do you own interest in another brokerage?",
+      "payload": [
+        {
+          "type": "button",
+          "fields": [
+            {
+              "name": "Yes",
+              "label": "Yes",
+              "value": "false"
+            },
+            {
+              "name": "No",
+              "label": "No",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "BUSINESS"
+  },
+  {
+    "data": {
+      "name": "haveSpouseOrDomesticPartner",
+      "message": "Do you have a spouse or domestic partner who is a licensed agent with another brokerage?",
+      "payload": [
+        {
+          "type": "button",
+          "fields": [
+            {
+              "name": "Yes",
+              "label": "Yes",
+              "value": "false",
+              "followUp": {
+                "data": {
+                  "name": "joiningExpOrAlreadyagent",
+                  "message": "Will they be joining eXp or are they already an eXp agent?",
+                  "payload": [
+                    {
+                      "type": "button",
+                      "fields": [
+                        {
+                          "name": "Yes",
+                          "label": "Yes",
+                          "value": "false"
+                        },
+                        {
+                          "name": "No",
+                          "label": "No",
+                          "value": "false"
+                        }
+                      ],
+                      "validations": {
+                        "required": true
+                      }
+                    }
+                  ]
+                },
+                "event": "BUSINESS"
+              }
+            },
+            {
+              "name": "No",
+              "label": "No",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "BUSINESS"
+  },
+  {
+    "data": {
+      "name": "haveOfficeOrBrickMortarLocation",
+      "message": "Do you currently own, lease, or manage a real estate office (in any capacity)?",
+      "payload": [
+        {
+          "type": "linkButton",
+          "fields": [
+            {
+              "label": "Branch Online Application",
+              "value": "https://22297573.hs-sites.com/branchofficeapplication",
+              "visibility": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        },
+        {
+          "type": "button",
+          "fields": [
+            {
+              "name": "Yes",
+              "label": "Yes",
+              "value": "false"
+            },
+            {
+              "name": "No",
+              "label": "No",
+              "value": "false"
+            },
+            {
+              "name": "Maybe",
+              "label": "Maybe",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "BUSINESS"
+  },
+  {
+    "data": {
+      "name": "individualOrTeam",
+      "message": "Will you be selling real estate with eXp as an individual agent or part of a team?",
+      "payload": [
+        {
+          "type": "radioButton",
+          "fields": [
+            {
+              "name": "Individual_Agent",
+              "label": "Individual",
+              "value": "false"
+            },
+            {
+              "name": "Team",
+              "label": "Team",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "type": "radio",
+            "required": true,
+            "errorMessage": "Individual or Team selection required"
+          }
+        },
+        {
+          "type": "button",
+          "fields": [
+            {
+              "label": "Submit",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "BUSINESS"
+  },
+  {
+    "data": {
+      "name": "isMemberOrLeader",
+      "message": "Thanks! What’s your role within the team?",
+      "payload": [
+        {
+          "type": "radioButton",
+          "fields": [
+            {
+              "name": "Member",
+              "label": "Member",
+              "value": "false",
+              "followUp": {
+                "data": {
+                  "name": "teamMember",
+                  "message": "How Teams Work at eXp\n\nBefore we continue, please take a moment to review how team structures work at eXp — including what to expect as a team member.",
+                  "payload": [
+                    {
+                      "type": "linkButton",
+                      "fields": [
+                        {
+                          "label": "🔗 How Teams Work at eXp",
+                          "value": "https://docs.google.com/document/d/15kb69QRYxvfD8sdAbnJqV2xOCJxDP1GZYSEr-pmhDow/edit?tab=t.0",
+                          "visibility": "true"
+                        }
+                      ],
+                      "isDisable": false
+                    },
+                    {
+                      "type": "textField",
+                      "fields": [
+                        {
+                          "hint": "Please enter the full name of your team leader.",
+                          "name": "teamLeader",
+                          "label": "Team leader",
+                          "value": ""
+                        }
+                      ],
+                      "isDisable": false,
+                      "validations": {
+                        "required": true,
+                        "errorMessage": "Team leader required"
+                      }
+                    },
+                    {
+                      "type": "textField",
+                      "fields": [
+                        {
+                          "hint": "What is your Teams Name, if know?",
+                          "name": "teamName",
+                          "label": "Team name",
+                          "value": ""
+                        }
+                      ],
+                      "isDisable": false,
+                      "validations": {
+                        "required": true,
+                        "errorMessage": "Team name required"
+                      }
+                    },
+                    {
+                      "type": "textArea",
+                      "fields": [
+                        {
+                          "hint": "Please provide any additional details on the team (optional)",
+                          "name": "additionalDetails",
+                          "label": "📝 Any Additional Team Details? (Optional)",
+                          "value": ""
+                        }
+                      ],
+                      "isDisable": false
+                    },
+                    {
+                      "type": "button",
+                      "fields": [
+                        {
+                          "name": "search",
+                          "label": "Search Team",
+                          "value": "false",
+                          "isDisable": false,
+                          "visibility": "true"
+                        },
+                        {
+                          "name": "cannotFindTeam",
+                          "label": "Can't find your team?",
+                          "value": "false",
+                          "isDisable": true,
+                          "visibility": "false",
+                          "skipValidationsIfTrue": true
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "event": "BUSINESS"
+              }
+            },
+            {
+              "name": "Leader",
+              "label": "Leader",
+              "value": "false",
+              "followUp": {
+                "data": {
+                  "name": "teamLeader",
+                  "message": "How Teams Work at eXp\n\nPlease download and review this quick guide to understand how teams operate at eXp — including structure, compensation, and onboarding steps.",
+                  "payload": [
+                    {
+                      "type": "linkButton",
+                      "fields": [
+                        {
+                          "label": "🔗 How Teams Work at eXp",
+                          "value": "https://docs.google.com/document/d/15kb69QRYxvfD8sdAbnJqV2xOCJxDP1GZYSEr-pmhDow/edit?tab=t.0",
+                          "visibility": "true"
+                        }
+                      ],
+                      "isDisable": false
+                    },
+                    {
+                      "type": "textField",
+                      "fields": [
+                        {
+                          "hint": "How many agents are currently on your team?",
+                          "name": "countOfMembers",
+                          "label": "# of members",
+                          "value": ""
+                        }
+                      ],
+                      "isDisable": false,
+                      "validations": {
+                        "type": "text",
+                        "pattern": "^(?:0|[1-9][0-9]*)$",
+                        "required": true,
+                        "errorMessage": "Please enter a valid team member count (e.g. 1, 2, 10). No letters, decimals, or symbols allowed."
+                      }
+                    },
+                    {
+                      "type": "textField",
+                      "fields": [
+                        {
+                          "hint": "Team Name?  (Note that team name will be reviewed/approved by your State Broker)",
+                          "name": "teamName",
+                          "label": "Team name",
+                          "value": ""
+                        }
+                      ],
+                      "isDisable": false,
+                      "validations": {
+                        "required": true,
+                        "errorMessage": "Team name required"
+                      }
+                    },
+                    {
+                      "type": "textArea",
+                      "fields": [
+                        {
+                          "hint": "Please provide any additional details on the team (optional)",
+                          "name": "additionalDetails",
+                          "label": "Additional Details (Optional)",
+                          "value": ""
+                        }
+                      ],
+                      "isDisable": false
+                    },
+                    {
+                      "type": "button",
+                      "fields": [
+                        {
+                          "name": "submit",
+                          "label": "Submit",
+                          "value": "false",
+                          "isDisable": false,
+                          "visibility": "true"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "event": "BUSINESS"
+              }
+            }
+          ],
+          "validations": {
+            "type": "radio",
+            "required": true,
+            "errorMessage": "Member or Leader selection required"
+          }
+        },
+        {
+          "type": "button",
+          "fields": [
+            {
+              "label": "Submit",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "BUSINESS"
+  },
+  {
+    "data": {
+      "name": "licenseSuspendedOrComplaint",
+      "message": "Have you ever had a license suspension or a registered complaint on your record? (Select all that apply)",
+      "payload": [
+        {
+          "type": "checkBox",
+          "fields": [
+            {
+              "name": "everHadLicenseSuspended",
+              "label": "License Suspended",
+              "value": "false"
+            },
+            {
+              "name": "everHadRegisteredCompaint",
+              "label": "Registered Complaint",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "type": "checkBox",
+            "required": true,
+            "errorMessage": "Please select at least one type."
+          }
+        },
+        {
+          "type": "button",
+          "fields": [
+            {
+              "label": "Submit",
+              "value": "false"
+            },
+            {
+              "label": "None of the above applies to me",
+              "value": "false",
+              "skipValidationsIfTrue": true
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "BUSINESS"
+  },
+  {
+    "data": {
+      "name": "desiredJoinTimeline",
+      "message": "When do you plan to transfer your license to eXp Realty?",
+      "payload": [
+        {
+          "type": "textMessage",
+          "fields": [
+            {
+              "label": "This can be an estimate — your license won’t transfer until you initiate it.Once your application is processed, you’ll receive state-specific instructions by email to guide you step by step."
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        },
+        {
+          "type": "calendar",
+          "fields": [
+            {
+              "label": "Select Date",
+              "value": ""
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "BUSINESS"
+  },
+  {
+    "data": {
+      "name": "plutoPaymentPayload",
+      "message": "**Next, we’ll set up your payment method.**\n\nThis is for your initial onboarding fee and future monthly fees associated with your eXp account.\n\n🔒 Your info is **encrypted and securely processed through Payload**, our trusted payment provider.\n\n**You'll be charged once your application is approved** — not before. (you have to put in a bank account and card and set default method).\n\nHere’s what to expect:\n\n• **Onboarding Fee:** $149\n\n• **Monthly Platform Fee:** $85 (starting after activation)\n\nThis ensures we can activate your account and set you up for success.\n\n**When you're ready, click Submit Payment Details to continue.**",
+      "payload": [
+        {
+          "type": "button",
+          "fields": [
+            {
+              "label": "Submit Payment Details",
+              "value": "false",
+              "status": ""
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ],
+      "customerId": "acct_3etcUg6l21oTHo2vFG2Cw",
+      "applicantUUID": "664e8c81-7dbd-11f0-8038-f74bc725b1e9"
+    },
+    "event": "PAYMENT"
+  },
+  {
+    "data": {
+      "name": "feedBack",
+      "message": "Are you happy with the experience provided by LUNA?",
+      "payload": [
+        {
+          "type": "button",
+          "fields": [
+            {
+              "name": "thumbsUp",
+              "label": "👍",
+              "value": "false"
+            },
+            {
+              "name": "thumbsDown",
+              "label": "👎",
+              "value": "false",
+              "followUp": {
+                "data": {
+                  "name": "additionalFeedback",
+                  "message": "What went wrong? Any additional feedback?",
+                  "payload": [
+                    {
+                      "type": "textField",
+                      "fields": [
+                        {
+                          "name": "additionalFeedback",
+                          "label": "Additional Feedback",
+                          "value": ""
+                        }
+                      ],
+                      "validations": {
+                        "required": true,
+                        "errorMessage": "Please enter something...."
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "fields": [
+                        {
+                          "label": "Submit",
+                          "value": "false"
+                        }
+                      ],
+                      "validations": {
+                        "required": true
+                      }
+                    }
+                  ]
+                },
+                "event": "REVIEW"
+              }
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "REVIEW"
+  },
+  {
+    "data": {
+      "name": "reviewApplication",
+      "message": "Next, you’ll review a summary of your application to confirm everything is correct.\n\nThen, we’ll guide you through signing your Independent Contractor Agreement (ICA) — this formalizes your partnership with eXp Realty. Your signature is securely captured using Dropbox Sign, and you'll have a chance to review everything before signing.\n\nOnce signed, we’ll move you into My eXp to complete two quick steps:\n\n• Set up Direct Deposit\n\n• Sign your W-9 Tax Form (also via Dropbox Sign)\n\nClick \"Review Application\" to review and sign everything in one streamlined flow.",
+      "payload": [
+        {
+          "type": "linkButton",
+          "fields": [
+            {
+              "color": "primaryBlue",
+              "label": "Review Application",
+              "value": "false"
+            }
+          ],
+          "validations": {
+            "required": true
+          }
+        }
+      ]
+    },
+    "event": "REVIEW"
+  }
+]
